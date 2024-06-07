@@ -4,6 +4,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'eemed/sitruuna.vim'
+Plug 'NateEbling/Ziggy'
 call plug#end()
 
 syntax on
@@ -31,7 +32,7 @@ set shiftround
 set relativenumber
 set nonumber
 
-colorscheme sitruuna
+colorscheme ziggy
 
 let mapleader = " "
 

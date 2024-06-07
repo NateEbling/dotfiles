@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-export PATH="$PATH:/opt/nvim-linux64/bin:$HOME/zig-linux-x86_64-0.13.0-dev.340+d750a78b2"
+export PATH="$PATH:/opt/nvim-linux64/bin:$HOME/zig-linux-x86_64-0.13.0"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
