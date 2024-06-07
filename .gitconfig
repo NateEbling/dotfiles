@@ -1,0 +1,22 @@
+[user]
+	name = NateEbling
+	email = ebling.nathan@gmail.com
+	signingkey = /home/nateebling/.ssh/id_ed25519.pub
+[init]
+	defaultBranch = master
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[push]
+	default = current
+[pull]
+	rebase = false
+[core]
+	excludesfile = /home/nateebling/.gitignore
+[merge]
+	conflictstyle = diff3
