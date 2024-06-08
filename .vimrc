@@ -3,8 +3,9 @@ Plug 'ziglang/zig.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'eemed/sitruuna.vim'
+Plug 'haze/sitruuna.vim'
 Plug 'NateEbling/Ziggy'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 syntax on
@@ -32,7 +33,7 @@ set shiftround
 set relativenumber
 set nonumber
 
-colorscheme ziggy
+colorscheme onedark
 
 let mapleader = " "
 
@@ -42,9 +43,11 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 nmap <Leader>pv :E<CR>
-nmap <Leader>t :rightb vert term bash<CR>
+nmap <Leader>t :rightb vert term zsh<CR>
 nmap <Leader>fv :FZF<CR>
 
 set laststatus=2
 
-
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ }
