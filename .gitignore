@@ -27,3 +27,4 @@ Documents/
 Pictures/
 dev/
 zig-linux*
+.vim/.netrwhist
