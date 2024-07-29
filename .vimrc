@@ -30,6 +30,7 @@ set relativenumber
 set nonumber
 set nolbr
 set tw=0
+set noswapfile
 
 colorscheme sitruuna
 
