@@ -47,3 +47,17 @@ map <C-l> <C-W>l
 
 set laststatus=2
 
+" ==== custom macros ====
+" Delete a function call. example:  floor(int(var))
+"         press when your cursor is       ^        results in:
+"                                   floor(var)
+map <C-H> ebdw%x<C-O>x
+nnoremap gp `[v`]
+
+" Toggle paste mode on and off
+map <leader>v :setlocal paste!<cr>
+
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+
+let g:zig_fmt_autosave = 1
