@@ -37,7 +37,7 @@ colorscheme sitruuna
 
 let mapleader = " "
 
-map <Leader>pv :E<CR>
+map <Leader>pv :w<CR> :E<CR>
 map <Leader>t :rightb vert term<CR>
 map <Leader>fv :FZF<CR>
 
