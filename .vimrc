@@ -18,7 +18,7 @@ set modeline
 set nocompatible
 set encoding=utf-8
 set hlsearch
-set history=700
+set history=10000
 set t_Co=256
 set termguicolors
 set background=dark
@@ -31,13 +31,15 @@ set nonumber
 set nolbr
 set tw=0
 set noswapfile
+set splitbelow
+set termwinsize=10x200
 
 colorscheme sitruuna
 
 let mapleader = " "
 
 map <Leader>pv :E<CR>
-map <Leader>t :rightb vert term<CR>
+map <Leader>t :term<CR>
 map <Leader>fv :FZF<CR>
 
 map <C-j> <C-W>j
