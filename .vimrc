@@ -32,14 +32,13 @@ set nolbr
 set tw=0
 set noswapfile
 set splitbelow
-set termwinsize=10x200
 
 colorscheme sitruuna
 
 let mapleader = " "
 
 map <Leader>pv :E<CR>
-map <Leader>t :term<CR>
+map <Leader>t :rightb vert term<CR>
 map <Leader>fv :FZF<CR>
 
 map <C-j> <C-W>j
