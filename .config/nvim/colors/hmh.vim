@@ -76,9 +76,12 @@ call s:HL('Comment', 'grey', 'none')
 call s:HL('Keyword', 'dyellow', 'none')
 call s:HL('Statement', 'default', 'none')
 call s:HL('StatusLine', 'default', 'lightbg')
+call s:HL('Keyword', 'dyellow', 'none')
 
-call s:HL('@punctuation', 'default', 'none')
-call s:HL('@variable', 'default', 'none')
+if has('nvim')
+    call s:HL('@punctuation', 'default', 'none')
+    call s:HL('@variable', 'default', 'none')
+endif
 
 hi! link Statement Normal
 hi! link Conditional Statement
@@ -86,7 +89,6 @@ hi! link Repeat Statement
 hi! link Label Statement
 hi! link Exception Statement
 hi! link Operator Normal
-hi! link Keyword Statement
 hi! link Function Statement
 hi! link Identifier Normal
 
