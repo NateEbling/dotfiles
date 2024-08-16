@@ -1,5 +1,4 @@
 call plug#begin()
-Plug 'ziglang/zig.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
@@ -9,7 +8,7 @@ filetype on
 set expandtab
 set bs=2
 set tabstop=4
-set shiftwidth=2
+set shiftwidth=4
 set autoindent
 set smartindent
 set smartcase
@@ -31,13 +30,13 @@ set nonumber
 set nolbr
 set tw=0
 set noswapfile
-set splitbelow
+set nocursorline
 
-colorscheme sitruuna
+colorscheme bw
 
 let mapleader = " "
 
-map <Leader>pv :w<CR> :E<CR>
+map <Leader>pv :E<CR>
 map <Leader>t :rightb vert term<CR>
 map <Leader>fv :FZF<CR>
 
@@ -60,5 +59,3 @@ map <leader>v :setlocal paste!<cr>
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
-
-let g:zig_fmt_autosave = 1
