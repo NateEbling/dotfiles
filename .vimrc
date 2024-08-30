@@ -7,8 +7,8 @@ syntax on
 filetype on
 set expandtab
 set bs=2
-set tabstop=4
-set shiftwidth=4
+set tabstop=8
+set shiftwidth=8
 set autoindent
 set smartindent
 set smartcase
@@ -25,36 +25,44 @@ set tabpagemax=1000
 set ruler
 set nojoinspaces
 set shiftround
+"set relativenumber
 set nonumber
 set nolbr
 set tw=0
 set noswapfile
 set nocursorline
+set laststatus=2
 
-colorscheme bw
+" Statusline
+
+function! Modified()
+	return (&modified ? '*' : '-')
+endfunction
+
+function! Version()
+	return (v:version)
+endfunction
+
+set fillchars+=stl:-
+set statusline=
+set statusline+=-%{Modified()}
+set statusline+=\ Vim
+set statusline+=\ %{Version()[0]}
+set statusline+=.%{Version()[2]}:
+set statusline+=\ %t
+set statusline+=\ (%{''.(&fenc!=''?&fenc:&enc).''})
+set statusline+=\ %f
+set statusline+=\ %=
+set statusline+=\ %P
+set statusline+=\ --
+
+" This removes all bold text
+set t_md=
+
+colorscheme c2
 
 let mapleader = " "
 
 map <Leader>pv :E<CR>
 map <Leader>t :rightb vert term<CR>
 map <Leader>fv :FZF<CR>
-
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-set laststatus=2
-
-" ==== custom macros ====
-" Delete a function call. example:  floor(int(var))
-"         press when your cursor is       ^        results in:
-"                                   floor(var)
-map <C-H> ebdw%x<C-O>x
-nnoremap gp `[v`]
-
-" Toggle paste mode on and off
-map <leader>v :setlocal paste!<cr>
-
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
