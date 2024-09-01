@@ -1,8 +1,3 @@
-call plug#begin()
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-call plug#end()
-
 syntax on
 filetype on
 set expandtab
@@ -28,13 +23,13 @@ set shiftround
 "set relativenumber
 set nonumber
 set nolbr
+set nowrap
 set tw=0
 set noswapfile
 set nocursorline
 set laststatus=2
 
 " Statusline
-
 function! Modified()
 	return (&modified ? '*' : '-')
 endfunction
@@ -66,3 +61,5 @@ let mapleader = " "
 map <Leader>pv :E<CR>
 map <Leader>t :rightb vert term<CR>
 map <Leader>fv :FZF<CR>
+
+nnoremap <C-f> :find ./**/*
