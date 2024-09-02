@@ -60,6 +60,5 @@ let mapleader = " "
 
 map <Leader>pv :E<CR>
 map <Leader>t :rightb vert term<CR>
-map <Leader>fv :FZF<CR>
 
 nnoremap <C-f> :find ./**/*
