@@ -3,7 +3,7 @@
 	email = ebling.nathan@gmail.com
 	signingkey = /home/nateebling/.ssh/id_ed25519.pub
 [init]
-	defaultBranch = master
+	defaultBranch = main
 [gpg]
 	format = ssh
 [commit]
