@@ -1,4 +1,4 @@
-export PATH="$PATH:$HOME/zig-linux-x86_64-0.14.0-dev.620+eab934814"
+export PATH="$PATH:$HOME/zig-linux-x86_64-0.13.0:/opt/nvim-linux64/bin"
 
 # If not running interactively, don't do anything
 case $- in
@@ -18,7 +18,6 @@ HISTFILESIZE=10000000
 
 export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
 
-
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -34,7 +33,7 @@ fi
 
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
-EDITOR=vim
+EDITOR='em'
 
 alias bubu='python3 ~/dev/bubu2000/src/main.py'
 alias nv='nvim'
@@ -56,3 +55,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
