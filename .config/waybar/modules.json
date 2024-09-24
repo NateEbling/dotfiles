@@ -1,12 +1,4 @@
-//  __  __           _       _
-// |  \/  | ___   __| |_   _| | ___  ___
-// | |\/| |/ _ \ / _` | | | | |/ _ \/ __|
-// | |  | | (_) | (_| | |_| | |  __/\__ \
-// |_|  |_|\___/ \__,_|\__,_|_|\___||___/
-//
-//
 {
-  // Workspaces
   "hyprland/workspaces": {
     "on-scroll-up": "hyprctl dispatch workspace r-1",
     "on-scroll-down": "hyprctl dispatch workspace r+1",
@@ -23,8 +15,7 @@
       "*": 5
     }
   },
-
-  // Taskbar
+  
   "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": 18,
@@ -39,22 +30,14 @@
     }
   },
 
-  // Hyprland Window
   "hyprland/window": {
     "separate-outputs": true
   },
 
-  // Empty
   "custom/empty": {
     "format": ""
   },
 
-  // Spacer
-  "custom/spacer": {
-    "format": " "
-  },
-
-  // Rofi Application Launcher
   "custom/appmenu": {
     // START APPS LABEL
     "format": "Apps",
@@ -63,44 +46,38 @@
     "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
   },
 
-  // Rofi Application Launcher
   "custom/appmenuicon": {
     "format": "",
     "on-click": "rofi -show drun -replace",
     "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
   },
 
-  // Power Menu
   "custom/exit": {
     "format": "",
     "on-click": "wlogout",
     "tooltip-format": "Power Menu"
   },
 
-  // System tray
   "tray": {
     "icon-size": 21,
     "spacing": 10
   },
 
-  // Clock
   "clock": {
     "format": "{:%H:%M %a}",
     "on-click": "ags -t calendar",
     "tooltip": false
   },
 
-  // CPU
   "cpu": {
     "format": "/ C {usage}% ",
   },
 
-  // Memory
+
   "memory": {
     "format": "/ M {}%  ",
   },
 
-  // Harddisc space used
   "disk": {
     "interval": 30,
     "format": "D {percentage_used}% ",
@@ -110,8 +87,7 @@
   "hyprland/language": {
     "format": "{short}"
   },
-
-  // Network
+  
   "network": {
     "format": "{ifname}",
     "format-wifi": "   {signalStrength}%",
@@ -126,7 +102,6 @@
     "on-click-right": "~/.config/ml4w/settings/networkmanager.sh"
   },
 
-  // Pulseaudio
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
     "format": "{icon}  {volume}%",
