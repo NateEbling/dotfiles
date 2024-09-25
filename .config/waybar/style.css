@@ -1,240 +1,105 @@
-@define-color backgroundlight #FFFFFF;
-@define-color backgrounddark #FFFFFF;
-@define-color workspacesbackground1 #FFFFFF;
-@define-color workspacesbackground2 #CCCCCC;
-@define-color bordercolor #FFFFFF;
-@define-color textcolor1 #000000;
-@define-color textcolor2 #000000;
-@define-color textcolor3 #FFFFFF;
-@define-color iconcolor #FFFFFF;
+{
+  "hyprland/workspaces": {
+    "on-scroll-up": "hyprctl dispatch workspace r-1",
+    "on-scroll-down": "hyprctl dispatch workspace r+1",
+    "format": "{icon}",
+    "format-icons": {
+      "urgent": "○",
+      "default": "○",
+      "active": "●"
+    },
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
 
-/* -----------------------------------------------------
- * General 
- * ----------------------------------------------------- */
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 23,
+    "icon-theme": "besgnulinux-mono-black",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    },
+    "rewrite": {
+      "Firefox Web Browser": "Firefox"
+    }
+  },
 
-* {
-    font-family: "Fira Sans semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    border: none;
-    border-radius: 0px;
-}
+  "custom/empty": {
+    "format": ""
+  },
 
-window#waybar {
-    background-color: rgba(0,0,0,0.4);
-    border-bottom: 0px solid #ffffff;
-    /* color: #FFFFFF; */
-    transition-property: background-color;
-    transition-duration: .5s;
-}
+ "custom/appmenuicon": {
+    "format": "",
+    "on-click": "wofi --show drun",
+    "tooltip": false
+  },
 
-/* -----------------------------------------------------
- * Workspaces 
- * ----------------------------------------------------- */
+  "custom/exit": {
+    "format": "",
+    "on-click": "wlogout",
+    "tooltip": false
+  },
 
- #workspaces {
-    margin: 3px 7px 3px 3px;
-    border: 0px;
-    font-size: 14px;
-    color: @textcolor1;
-}
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
 
-#workspaces button {
-    border: 0px;
-    margin:4px 5px 4px 0px;
-    padding:0px 4px 0px 4px;
-    color: @textcolor3;
-    transition: all 0.5s ease-in-out;
-}
+  "clock": {
+    "format": "{:%H:%M - %a %d}",
+    "tooltip": false
+  },
 
-#workspaces button.active {
-    color: @textcolor1;
-    background: @workspacesbackground2;
-    border-radius: 15px;
-}
+  "cpu": {
+    "format": "/ C {usage}% "
+  },
 
-#workspaces button:hover {
-    color: @textcolor1;
-    background: @workspacesbackground2;
-    border-radius: 15px;
-}
+  "memory": {
+    "format": "/ M {}%  "
+  },
 
-/* -----------------------------------------------------
- * Tooltips
- * ----------------------------------------------------- */
+  "disk": {
+    "interval": 30,
+    "format": "D {percentage_used}% ",
+    "path": "/"
+  },
 
-tooltip {
-    border-radius: 10px;
-    background-color: @backgroundlight;
-    opacity:0.8;
-    padding:20px;
-    margin:0px;
-}
+  "hyprland/language": {
+    "format": "{short}"
+  },
 
-tooltip label {
-    color: @textcolor2;
-}
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "   {signalStrength}%",
+    "format-ethernet": "",
+    "format-disconnected": "Disconnected",
+    "tooltip-format": " {ifname} via {gwaddri}",
+    "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+    "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  },
 
-/* -----------------------------------------------------
- * Window
- * ----------------------------------------------------- */
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": " {format_source}",
+    "format-source": "",
+    "tooltip-format": "Volume: {volume}%",
+    "format-source-muted": "",
+    "format-icons": {
+      "default": ["", ""]
+    },
+    "on-click": "pavucontrol"
+  },
 
-#window {
-    margin: 0px 15px 0px 0px;
-    border-radius: 12px;
-    color:@textcolor;
-    font-size:14px;
-    font-weight:normal;
-}
-
-window#waybar.empty #window {
-    background-color:transparent;
-}
-
-/* -----------------------------------------------------
- * Modules
- * ----------------------------------------------------- */
-
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-/* -----------------------------------------------------
- * Custom Quicklinks
- * ----------------------------------------------------- */
-
-#custom-browser, 
-#custom-filemanager, 
-#custom-windowsvm, 
-#custom-system,
-#custom-quicklink1,
-#custom-quicklink2,
-#custom-quicklink3,
-#custom-quicklink4,
-#custom-quicklink5,
-#custom-quicklink6,
-#custom-quicklink7,
-#custom-quicklink8,
-#custom-quicklink9,
-#custom-quicklink10,
-
-#custom-browser {
-    margin-right: 12px;
-}
-
-/* -----------------------------------------------------
- * Custom Modules
- * ----------------------------------------------------- */
-
-#custom-appmenuicon {
-    font-size: 20px;
-    color: @textcolor;
-    margin: 0px 15px 0px 10px;
-}
-
-/* -----------------------------------------------------
- * Custom Exit
- * ----------------------------------------------------- */
-
-#custom-exit {
-    margin: 0px 20px 0px 0px;
-    padding:0px;
-    font-size:16px;
-    color: @iconcolor;
-}
-
-/* -----------------------------------------------------
- * Custom Updates
- * ----------------------------------------------------- */
-
-#custom-updates {
-    font-size: 14px;
-    color: @textcolor;
-    border-radius: 15px;
-    margin: 0px 15px 0px 0px;
-}
-
-#custom-updates.green {
-}
-
-#custom-updates.yellow {
-    color: #ff9a3c;
-}
-
-#custom-updates.red {
-    color: #dc2f2f;
-}
-
-#disk,#memory,#cpu,#language {
-    margin:0px;
-    padding:0px;
-    font-size:14px;
-    color:@iconcolor;
-}
-
-#language {
-    margin-right:10px;
-}
-
-/* -----------------------------------------------------
- * Clock
- * ----------------------------------------------------- */
-
-#clock {
-    font-size: 15px;
-    color: @textcolor;
-    margin: 0px 15px 0px 0px;
-}
-
-/* -----------------------------------------------------
- * Pulseaudio
- * ----------------------------------------------------- */
-
- #pulseaudio {
-    font-size: 14px;
-    color: @textcolor;
-    border-radius: 15px;
-    margin: 0px 15px 0px 0px;
-}
-
-#pulseaudio.muted {
-    color: @textcolor;
-}
-
-/* -----------------------------------------------------
- * Network
- * ----------------------------------------------------- */
-
-#network {
-    font-size: 14px;
-    color: @textcolor;
-    border-radius: 15px;
-    margin: 0px 15px 0px 0px;
-}
-
-#network.ethernet {
-    color: @textcolor;
-}
-
-#network.wifi {
-    color: @textcolor;
-}
-
-/* -----------------------------------------------------
- * Tray
- * ----------------------------------------------------- */
-
-#tray {
-    margin:0px 10px 0px 0px;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+  "group/net-audio": {
+    "orientation": "horizontal",
+    "modules": [
+        "pulseaudio",
+        "network"
+    ]
+  }
 }
