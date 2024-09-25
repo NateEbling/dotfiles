@@ -2,60 +2,45 @@
   "hyprland/workspaces": {
     "on-scroll-up": "hyprctl dispatch workspace r-1",
     "on-scroll-down": "hyprctl dispatch workspace r+1",
-    "on-click": "activate",
-    "active-only": false,
-    "all-outputs": true,
-    "format": "{}",
+    "format": "{icon}",
     "format-icons": {
-      "urgent": "",
-      "active": "",
-      "default": ""
+      "urgent": "○",
+      "default": "○",
+      "active": "●"
     },
     "persistent-workspaces": {
       "*": 5
     }
   },
-  
+
   "wlr/taskbar": {
     "format": "{icon}",
-    "icon-size": 18,
-    "tooltip-format": "{title}",
+    "icon-size": 23,
+    "icon-theme": "besgnulinux-mono-black",
     "on-click": "activate",
     "on-click-middle": "close",
     "app_ids-mapping": {
       "firefoxdeveloperedition": "firefox-developer-edition"
     },
     "rewrite": {
-      "Firefox Web Browser": "Firefox",
+      "Firefox Web Browser": "Firefox"
     }
-  },
-
-  "hyprland/window": {
-    "separate-outputs": true
   },
 
   "custom/empty": {
     "format": ""
   },
 
-  "custom/appmenu": {
-    // START APPS LABEL
-    "format": "Apps",
-    // END APPS LABEL
-    "on-click": "sleep 0.2;rofi -show drun -replace",
-    "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
-  },
-
-  "custom/appmenuicon": {
+ "custom/appmenuicon": {
     "format": "",
-    "on-click": "rofi -show drun -replace",
-    "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
+    "on-click": "wofi --show drun",
+    "tooltip": false
   },
 
   "custom/exit": {
     "format": "",
     "on-click": "wlogout",
-    "tooltip-format": "Power Menu"
+    "tooltip": false
   },
 
   "tray": {
@@ -64,61 +49,57 @@
   },
 
   "clock": {
-    "format": "{:%H:%M %a}",
-    "on-click": "ags -t calendar",
+    "format": "{:%H:%M - %a %d}",
     "tooltip": false
   },
 
   "cpu": {
-    "format": "/ C {usage}% ",
+    "format": "/ C {usage}% "
   },
 
-
   "memory": {
-    "format": "/ M {}%  ",
+    "format": "/ M {}%  "
   },
 
   "disk": {
     "interval": 30,
     "format": "D {percentage_used}% ",
-    "path": "/",
+    "path": "/"
   },
 
   "hyprland/language": {
     "format": "{short}"
   },
-  
+
   "network": {
     "format": "{ifname}",
     "format-wifi": "   {signalStrength}%",
-    "format-ethernet": "  {ifname}",
+    "format-ethernet": "",
     "format-disconnected": "Disconnected",
     "tooltip-format": " {ifname} via {gwaddri}",
     "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
     "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
     "tooltip-format-disconnected": "Disconnected",
-    "max-length": 50,
-    "on-click": "$(cat ~/.config/ml4w/settings/terminal.sh) --class dotfiles-floating -e nmtui",
-    "on-click-right": "~/.config/ml4w/settings/networkmanager.sh"
+    "max-length": 50
   },
 
   "pulseaudio": {
-    // "scroll-step": 1, // %, can be a float
-    "format": "{icon}  {volume}%",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
+    "format": "{icon}",
     "format-muted": " {format_source}",
-    "format-source": "{volume}% ",
+    "format-source": "",
+    "tooltip-format": "Volume: {volume}%",
     "format-source-muted": "",
     "format-icons": {
-      "headphone": " ",
-      "hands-free": " ",
-      "headset": " ",
-      "phone": " ",
-      "portable": " ",
-      "car": " ",
-      "default": ["", "", ""]
+      "default": ["", ""]
     },
     "on-click": "pavucontrol"
   },
+
+  "group/net-audio": {
+    "orientation": "horizontal",
+    "modules": [
+        "pulseaudio",
+        "network"
+    ]
+  }
 }
