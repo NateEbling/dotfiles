@@ -1,105 +1,150 @@
-{
-  "hyprland/workspaces": {
-    "on-scroll-up": "hyprctl dispatch workspace r-1",
-    "on-scroll-down": "hyprctl dispatch workspace r+1",
-    "format": "{icon}",
-    "format-icons": {
-      "urgent": "○",
-      "default": "○",
-      "active": "●"
-    },
-    "persistent-workspaces": {
-      "*": 5
-    }
-  },
+@define-color background #FFFFFF;
+@define-color bordercolor #000000;
+@define-color black #000000;
+@define-color accent #2a77db;
+@define-color powercolor #ff5e5e;
 
-  "wlr/taskbar": {
-    "format": "{icon}",
-    "icon-size": 23,
-    "icon-theme": "besgnulinux-mono-black",
-    "on-click": "activate",
-    "on-click-middle": "close",
-    "app_ids-mapping": {
-      "firefoxdeveloperedition": "firefox-developer-edition"
-    },
-    "rewrite": {
-      "Firefox Web Browser": "Firefox"
-    }
-  },
+* {
+    font-family: "Ubuntu Nerd Font";
+    /*font-family: "JetBrainsMono Nerd Font";*/
+    font-weight: bold; 
+    font-size: 14px;
+}
 
-  "custom/empty": {
-    "format": ""
-  },
+window#waybar {
+    background-color: rgba(255, 255, 255,1);
+    border-bottom: 3px solid #000000;
+    /* color: #FFFFFF; */
+    transition-property: background-color;
+    transition-duration: .5s;
+}
 
- "custom/appmenuicon": {
-    "format": "",
-    "on-click": "wofi --show drun",
-    "tooltip": false
-  },
+#workspaces {
+    margin: 3px 7px 3px 3px;
+    border: 0px;
+    font-size: 14px;
+    color: @black;
+}
 
-  "custom/exit": {
-    "format": "",
-    "on-click": "wlogout",
-    "tooltip": false
-  },
+#workspaces button {
+    color: #000000;
+    padding: 0 1px;
+    border-radius: 15px;
+    transition: 0.2s ease;
+}
 
-  "tray": {
-    "icon-size": 21,
-    "spacing": 10
-  },
+#workspaces button.active {
+    color: @accent;
+}
 
-  "clock": {
-    "format": "{:%H:%M - %a %d}",
-    "tooltip": false
-  },
+#workspaces button:hover {
+    color: @black;
+}
 
-  "cpu": {
-    "format": "/ C {usage}% "
-  },
+tooltip {
+    border-radius: 10px;
+    background-color: @background;
+    opacity:0.8;
+    padding:20px;
+    margin:0px;
+}
 
-  "memory": {
-    "format": "/ M {}%  "
-  },
+tooltip label {
+    color: @black;
+}
 
-  "disk": {
-    "interval": 30,
-    "format": "D {percentage_used}% ",
-    "path": "/"
-  },
+#window {
+    margin: 0px 15px 0px 0px;
+    border-radius: 12px;
+    color:@black;
+    font-size:14px;
+    font-weight:normal;
+}
 
-  "hyprland/language": {
-    "format": "{short}"
-  },
+window#waybar.empty #window {
+    background-color:transparent;
+}
 
-  "network": {
-    "format": "{ifname}",
-    "format-wifi": "   {signalStrength}%",
-    "format-ethernet": "",
-    "format-disconnected": "Disconnected",
-    "tooltip-format": " {ifname} via {gwaddri}",
-    "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
-    "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
-    "tooltip-format-disconnected": "Disconnected",
-    "max-length": 50
-  },
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
 
-  "pulseaudio": {
-    "format": "{icon}",
-    "format-muted": " {format_source}",
-    "format-source": "",
-    "tooltip-format": "Volume: {volume}%",
-    "format-source-muted": "",
-    "format-icons": {
-      "default": ["", ""]
-    },
-    "on-click": "pavucontrol"
-  },
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
 
-  "group/net-audio": {
-    "orientation": "horizontal",
-    "modules": [
-        "pulseaudio",
-        "network"
-    ]
-  }
+#custom-appmenuicon {
+    font-size: 25px;
+    color: @black;
+    margin: 0px 15px 0px 10px;
+}
+
+#custom-exit {
+    margin: 0px 20px 0px 0px;
+    padding-left: 15px;
+    font-size:16px;
+    color: @powercolor;
+}
+
+#disk,#memory,#cpu,#language {
+    margin:0px;
+    padding:0px;
+    font-size:14px;
+    color:@black;
+}
+
+#clock {
+    font-size: 15px;
+    color: #FFFFFF;
+    margin: 5px 0px 7px 0px;
+    padding: 1px 1px;
+    background: @accent;
+    border-radius: 10px;
+    border: 3px solid #000000;
+}
+
+#pulseaudio {
+    font-size: 16px;
+    color: #FFFFFF;
+    border-radius: 18px;
+    margin: 5px 0px 7px 0px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background: @accent;
+    border-radius: 10px 0px 0px 10px;
+    transition: none;
+    border-left: 3px solid #000000;
+    border-top: 3px solid #000000;
+    border-bottom: 3px solid #000000;
+}
+
+#pulseaudio.muted {
+    color: #ad7f7f;
+}
+
+#network {
+    font-size: 16px;
+    color: #FFFFFF;
+    margin: 5px 0px 7px 0px;
+    border-radius: 18px;
+    padding-right: 20px;
+    background: @accent;
+    border-radius: 0px 10px 10px 0px;
+    transition: none;
+    border-right: 3px solid #000000;
+    border-top: 3px solid #000000;
+    border-bottom: 3px solid #000000;
+}
+
+#tray {
+    margin:0px 10px 0px 0px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
 }
