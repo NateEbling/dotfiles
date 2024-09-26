@@ -42,7 +42,7 @@
     "tooltip": false
   },
 
-  "custom/exit": {
+  "custom/powermenu": {
     "format": "",
     "on-click": "wlogout",
     "tooltip": false
