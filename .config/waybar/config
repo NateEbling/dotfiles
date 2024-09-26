@@ -19,11 +19,11 @@
     ],
 
     "modules-center": [
-        "clock"
+        "clock",
     ],
 
     "modules-right": [
         "group/net-audio",
-        "custom/exit",
+        "custom/powermenu",
     ]
 }
