@@ -1,7 +1,7 @@
 @define-color background #FFFFFF;
 @define-color bordercolor #000000;
 @define-color black #000000;
-@define-color accent #2a77db;
+@define-color accent #db7c00;
 @define-color powercolor #ff5e5e;
 
 * {
@@ -73,13 +73,25 @@ window#waybar.empty #window {
     margin-right: 0;
 }
 
+#custom-updates {
+    color: @black;
+    font-size: 15px;
+    padding: 5px 5px;
+}
+
+#custom-notification {
+    color:@black;
+    font-size: 15px;
+    padding: 5px 5px;
+}
+
 #custom-appmenuicon {
     font-size: 25px;
     color: @black;
     margin: 0px 15px 0px 10px;
 }
 
-#custom-exit {
+#custom-powermenu {
     margin: 0px 20px 0px 0px;
     padding-left: 15px;
     font-size:16px;
