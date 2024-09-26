@@ -27,8 +27,13 @@
     }
   },
 
-  "custom/empty": {
-    "format": ""
+  "custom/updates": {
+    "format": "{} ",
+    "interval": 3600,                                       // every hour
+    "exec": "(checkupdates;pacman -Qm | aur vercmp) | wc -l",       // # of$
+    "exec-if": "exit 0",                                    // always run; $
+    "signal": 8,
+    "tooltip": false,
   },
 
  "custom/appmenuicon": {
