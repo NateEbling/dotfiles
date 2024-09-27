@@ -29,9 +29,9 @@
 
   "custom/updates": {
     "format": "{} ",
-    "interval": 3600,                                       // every hour
-    "exec": "(checkupdates;pacman -Qm | aur vercmp) | wc -l",       // # of$
-    "exec-if": "exit 0",                                    // always run; $
+    "interval": 3600,                                    
+    "exec": "(checkupdates;pacman -Qm | aur vercmp) | wc -l",   
+    "exec-if": "exit 0",                            
     "signal": 8,
     "tooltip": false,
   },
