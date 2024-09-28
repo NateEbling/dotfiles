@@ -1,4 +1,3 @@
-syntax on
 filetype on
 set expandtab
 set bs=2
@@ -20,7 +19,6 @@ set tabpagemax=1000
 set ruler
 set nojoinspaces
 set shiftround
-"set relativenumber
 set nonumber
 set nolbr
 set nowrap
@@ -54,11 +52,9 @@ set statusline+=\ --
 " This removes all bold text
 set t_md=
 
-colorscheme c2
-
 let mapleader = " "
 
 map <Leader>pv :E<CR>
 map <Leader>t :rightb vert term<CR>
 
-nnoremap <C-f> :find ./**/*
+nnoremap <Leader>f :find ./**/*
