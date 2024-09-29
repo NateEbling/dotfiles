@@ -11,7 +11,7 @@ set ignorecase
 set modeline
 set nocompatible
 set encoding=utf-8
-set hlsearch
+set nohlsearch
 set history=10000
 set t_Co=0
 set background=dark
