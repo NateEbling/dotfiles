@@ -1,4 +1,5 @@
-filetype on
+syntax off
+filetype off
 set expandtab
 set bs=2
 set tabstop=8
@@ -12,8 +13,7 @@ set nocompatible
 set encoding=utf-8
 set hlsearch
 set history=10000
-set t_Co=256
-set termguicolors
+set t_Co=0
 set background=dark
 set tabpagemax=1000
 set ruler
@@ -58,3 +58,5 @@ map <Leader>pv :E<CR>
 map <Leader>t :rightb vert term<CR>
 
 nnoremap <Leader>f :find ./**/*
+
+let loaded_matchparen = 1
