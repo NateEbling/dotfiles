@@ -15,7 +15,7 @@
 
   "wlr/taskbar": {
     "format": "{icon}",
-    "icon-size": 23,
+    "icon-size": 17,
     "icon-theme": "besgnulinux-mono-black",
     "on-click": "activate",
     "on-click-middle": "close",
@@ -24,14 +24,15 @@
     },
     "rewrite": {
       "Firefox Web Browser": "Firefox"
-    }
+    },
+    "tooltip": false
   },
 
   "custom/updates": {
     "format": "{} ",
-    "interval": 3600,                                    
-    "exec": "(checkupdates;pacman -Qm | aur vercmp) | wc -l",   
-    "exec-if": "exit 0",                            
+    "interval": 3600,                                       // every hour
+    "exec": "(checkupdates;pacman -Qm | aur vercmp) | wc -l",       // # of$
+    "exec-if": "exit 0",                                    // always run; $
     "signal": 8,
     "tooltip": false,
   },
@@ -49,13 +50,13 @@
   },
 
   "tray": {
-    "icon-size": 21,
+    "icon-size": 5,
     "spacing": 10
   },
 
   "clock": {
     "format": "{:%H:%M - %b %d}",
-    "tooltip": false
+    "tooltip": false,
   },
 
   "cpu": {

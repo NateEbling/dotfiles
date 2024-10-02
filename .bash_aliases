@@ -1,4 +1,3 @@
-# git
 alias gs='git status'
 alias gc='git commit'
 alias gca='git add -A && git commit'
