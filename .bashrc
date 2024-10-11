@@ -1,7 +1,3 @@
-#
-# ~/.bashrc
-#
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -23,9 +19,13 @@ fi
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH=$BUN_INSTALL/bin:$PATH
-
 # cd to possibly nonexisting dir
 ccd() { mkdir -p "$@" && cd "$@"; }
+
+export ZIG_INSTALL=$(find ~ -maxdepth 1 -type d -name 'zig-linux-x86_64-*' | sort | tail -n 1)
+
+if [ -d "$ZIG_INSTALL" ]; then
+    export PATH="$ZIG_INSTALL:$PATH"
+fi
+
+. "$HOME/.cargo/env"
