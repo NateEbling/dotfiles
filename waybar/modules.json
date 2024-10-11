@@ -9,7 +9,7 @@
       "active": "●"
     },
     "persistent-workspaces": {
-      "*": 5
+      "*": 3 
     }
   },
 
@@ -39,7 +39,7 @@
 
  "custom/appmenuicon": {
     "format": "",
-    "on-click": "wofi --show drun",
+    "on-click": "rofi -show drun",
     "tooltip": false
   },
 
@@ -50,7 +50,7 @@
   },
 
   "tray": {
-    "icon-size": 5,
+    "icon-size": 10,
     "spacing": 10
   },
 
