@@ -13,5 +13,6 @@ set nonumber
 set noswapfile
 set nocursorline
 set laststatus=0
+set nolbr
 
 hi EndOfBuffer guifg=#ffffff
