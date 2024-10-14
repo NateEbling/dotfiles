@@ -37,7 +37,7 @@ window#waybar {
 }
 
 #taskbar button:hover {
-    color: @black;
+    color: @white;
     font-size: 13px;
 }
 

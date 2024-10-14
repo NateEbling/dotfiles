@@ -15,8 +15,9 @@
   },
 
   "wlr/taskbar": {
-    "format": "{icon} {title:.15}",
-    "icon-size": 20,
+    /*"format": "{icon} {title:.15}",*/
+    "format": "{icon}",
+    "icon-size": 24,
     "on-click": "activate",
     "on-click-middle": "close",
     "app_ids-mapping": {
