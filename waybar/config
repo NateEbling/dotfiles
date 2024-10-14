@@ -1,8 +1,8 @@
 {
     // General Settings
-    "layer": "top",
     "margin-bottom": 0,
     "layer": "top",
+    "position": "bottom",
     "margin-left": 0,
     "margin-right": 0,    
     "spacing": 0,
@@ -19,11 +19,10 @@
     ],
 
     "modules-center": [
-        "clock",
     ],
 
     "modules-right": [
         "group/net-audio",
-        "custom/powermenu",
+        "clock",
     ]
 }

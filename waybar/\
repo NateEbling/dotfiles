@@ -33,13 +33,14 @@ window#waybar {
 
 #taskbar button{
     color: @white;
-    font-size: 13px;
 }
 
 #taskbar button:hover {
     color: @black;
-    font-size: 13px;
+    font-size: 12px;
 }
+
+
 
 #workspaces button.active {
 }
@@ -94,7 +95,6 @@ window#waybar.empty #window {
 
 #custom-appmenuicon {
     font-size: 25px;
-    color: #1793d0;
     margin: 0px 15px 0px 10px;
 }
 

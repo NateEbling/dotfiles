@@ -6,7 +6,8 @@
     "format-icons": {
       "urgent": "○",
       "default": "○",
-      "active": "●"
+      "active": "●",
+      "shell": "",
     },
     "persistent-workspaces": {
       "*": 3 
@@ -14,9 +15,8 @@
   },
 
   "wlr/taskbar": {
-    "format": "{icon}",
-    "icon-size": 17,
-    "icon-theme": "besgnulinux-mono-black",
+    "format": "{icon}{title:.15}",
+    "icon-size": 20,
     "on-click": "activate",
     "on-click-middle": "close",
     "app_ids-mapping": {
@@ -28,18 +28,9 @@
     "tooltip": false
   },
 
-  "custom/updates": {
-    "format": "{} ",
-    "interval": 3600,                                       // every hour
-    "exec": "(checkupdates;pacman -Qm | aur vercmp) | wc -l",       // # of$
-    "exec-if": "exit 0",                                    // always run; $
-    "signal": 8,
-    "tooltip": false,
-  },
-
  "custom/appmenuicon": {
     "format": "",
-    "on-click": "rofi -show drun",
+    "on-click": "wlogout",
     "tooltip": false
   },
 
@@ -55,12 +46,13 @@
   },
 
   "clock": {
-    "format": "{:%H:%M - %b %d}",
+    "format": "{:%a %b %d  %H:%M}",
     "tooltip": false,
   },
 
   "cpu": {
-    "format": "/ C {usage}% "
+     "format": "{icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7}",
+     "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
   },
 
   "memory": {
