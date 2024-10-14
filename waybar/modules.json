@@ -15,7 +15,7 @@
   },
 
   "wlr/taskbar": {
-    "format": "{icon}{title:.15}",
+    "format": "{icon} {title:.15}",
     "icon-size": 20,
     "on-click": "activate",
     "on-click-middle": "close",
