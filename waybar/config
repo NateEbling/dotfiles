@@ -15,6 +15,7 @@
     "modules-left": [
         "custom/appmenuicon",
         "hyprland/workspaces",
+        "cpu",
         "wlr/taskbar",
     ],
 
