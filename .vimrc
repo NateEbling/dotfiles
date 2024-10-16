@@ -2,8 +2,8 @@ syntax off
 filetype on 
 
 set bs=2
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set autoindent
 set smartindent
@@ -24,3 +24,6 @@ hi EndOfBuffer guifg=#ffffff
 
 " C 
 autocmd FileType c setlocal expandtab shiftwidth=8 tabstop=8
+
+" Zig
+autocmd FileType zig setlocal expandtab shiftwidth=4 tabstop=4
