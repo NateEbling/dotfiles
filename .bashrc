@@ -1,16 +1,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
-
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
-fi
-
-if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
-    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-fi
+alias ls='ls --color=auto -a'
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -27,5 +18,3 @@ export ZIG_INSTALL=$(find ~ -maxdepth 1 -type d -name 'zig-linux-x86_64-*' | sor
 if [ -d "$ZIG_INSTALL" ]; then
     export PATH="$ZIG_INSTALL:$PATH"
 fi
-
-. "$HOME/.cargo/env"
