@@ -28,6 +28,9 @@ bind '"\e[B": history-search-forward'
 # cd to possibly nonexisting dir
 ccd() { mkdir -p "$@" && cd "$@"; }
 
+# enter nix-shell with dev command
+dev() { nix-shell -p "$@"; }
+
 export ZIG_INSTALL=$(find ~ -maxdepth 1 -type d -name 'zig-linux-x86_64-*' | sort | tail -n 1)
 
 if [ -d "$ZIG_INSTALL" ]; then

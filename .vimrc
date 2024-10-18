@@ -1,4 +1,4 @@
-syntax off
+syntax on
 filetype on 
 
 set bs=2
@@ -10,13 +10,16 @@ set smartindent
 set nojoinspaces
 set shiftround
 set encoding=utf-8
-set t_Co=0
+set t_Co=256
+set termguicolors
 set nohlsearch
 set nonumber
 set noswapfile
 set nocursorline
 set laststatus=0
 set nolbr
+
+colorscheme sitruuna
 
 let g:loaded_matchparen=1
 

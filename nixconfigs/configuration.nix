@@ -10,11 +10,20 @@
       ./hardware-configuration.nix
     ];
 
-  hardware.nvidia = {
-	modesetting.enable = true;
-  };
 
   services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+
+    nvidiaSettings = false;
+
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+  hardware.opengl = {
+    enable = true;
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
