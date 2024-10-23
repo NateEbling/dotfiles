@@ -1,3 +1,8 @@
+call plug#begin()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+call plug#end()
+
 syntax on
 filetype on 
 
@@ -18,15 +23,24 @@ set noswapfile
 set nocursorline
 set laststatus=0
 set nolbr
+set relativenumber
+set nonumber
 
 colorscheme sitruuna
-
-let g:loaded_matchparen=1
-
-hi EndOfBuffer guifg=#ffffff
 
 " C 
 autocmd FileType c setlocal expandtab shiftwidth=8 tabstop=8
 
 " Zig
 autocmd FileType zig setlocal expandtab shiftwidth=4 tabstop=4
+
+let mapleader = " "
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" File finder
+nmap <Leader>t :FZF<CR>
