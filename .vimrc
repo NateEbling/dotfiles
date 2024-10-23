@@ -4,29 +4,34 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 syntax on
-filetype on 
-
+filetype on
+set expandtab
 set bs=2
 set tabstop=2
 set shiftwidth=2
-set expandtab
 set autoindent
 set smartindent
-set nojoinspaces
-set shiftround
+set smartcase
+set ignorecase
+set modeline
+set nocompatible
 set encoding=utf-8
+set hlsearch
+set history=700
 set t_Co=256
 set termguicolors
-set nohlsearch
-set nonumber
-set noswapfile
-set nocursorline
-set laststatus=0
-set nolbr
+set background=dark
+set tabpagemax=1000
+set ruler
+set nojoinspaces
+set shiftround
 set relativenumber
 set nonumber
 
 colorscheme sitruuna
+
+set nolbr
+set tw=0
 
 " C 
 autocmd FileType c setlocal expandtab shiftwidth=8 tabstop=8
