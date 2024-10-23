@@ -11,7 +11,7 @@
     ];
 
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "nvidia"];
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -22,6 +22,7 @@
   };
 
   hardware.opengl = {
+    driSupport = true;
     enable = true;
   };
 
@@ -112,10 +113,10 @@
   };
 
   programs.steam = {
-	enable = true;
-	remotePlay.openFirewall = true;
-	dedicatedServer.openFirewall = true;
-	localNetworkGameTransfers.openFirewall = true;
+	  enable = true;
+	  remotePlay.openFirewall = true;
+	  dedicatedServer.openFirewall = true;
+	  localNetworkGameTransfers.openFirewall = true;
   };
 
   # Install firefox.
