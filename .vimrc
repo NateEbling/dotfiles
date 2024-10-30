@@ -3,7 +3,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
 
-syntax on
+syntax off
 filetype on
 set expandtab
 set bs=2
@@ -18,17 +18,13 @@ set nocompatible
 set encoding=utf-8
 set hlsearch
 set history=700
-set t_Co=256
-set termguicolors
+set t_Co=0
 set background=dark
 set tabpagemax=1000
-set ruler
 set nojoinspaces
 set shiftround
-set relativenumber
 set nonumber
-
-colorscheme sitruuna
+set ruler
 
 set nolbr
 set tw=0
