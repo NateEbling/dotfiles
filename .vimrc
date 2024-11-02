@@ -31,6 +31,7 @@ set tw=0
 
 " C 
 autocmd FileType c setlocal expandtab shiftwidth=8 tabstop=8
+autocmd FileType h setlocal expandtab shiftwidth=8 tabstop=8
 
 " Zig
 autocmd FileType zig setlocal expandtab shiftwidth=4 tabstop=4
