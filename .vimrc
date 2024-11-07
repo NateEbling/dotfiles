@@ -30,7 +30,7 @@ set nolbr
 set tw=0
 
 " C 
-autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=8 tabstop=8
+autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=4 tabstop=4
 
 " Zig
 autocmd FileType zig setlocal expandtab shiftwidth=4 tabstop=4
