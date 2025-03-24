@@ -19,6 +19,7 @@ let s:col.grey         = ['#7f7f7f', 244]
 let s:col.blue         = ['#191970', 16]
 let s:col.green        = ['#6b8e23', 15]
 let s:col.red          = ['#ff0000', 196]
+let s:col.white        = ['#ffffff', 16]
 let s:col.none         = ['NONE', 'NONE']
 let s:underline        = 'underline'
 
@@ -76,6 +77,10 @@ call s:HL('Comment', 'grey', 'none')
 call s:HL('Keyword', 'dyellow', 'none')
 call s:HL('Statement', 'default', 'none')
 call s:HL('StatusLine', 'default', 'lightbg')
+call s:HL('LineNr', 'default', 'none')
+call s:HL('NonText', 'grey', 'none')
+call s:HL('MatchParen', 'default', 'grey')
+call s:HL('Todo', 'white', 'dyellow')
 call s:HL('Keyword', 'dyellow', 'none')
 
 if has('nvim')
