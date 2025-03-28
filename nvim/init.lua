@@ -1,3 +1,3 @@
 require("nate")
 
-vim.cmd.colorscheme('2c')
+vim.cmd.colorscheme('clean')
