@@ -3,7 +3,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
 
-syntax off
+syntax on
 filetype on
 set expandtab
 set bs=2
@@ -18,7 +18,8 @@ set nocompatible
 set encoding=utf-8
 set hlsearch
 set history=700
-set t_Co=0
+set termguicolors
+set t_Co=256
 set background=dark
 set tabpagemax=1000
 set nojoinspaces
@@ -28,6 +29,11 @@ set ruler
 
 set nolbr
 set tw=0
+set laststatus=2
+
+colorscheme evening
+
+highlight StatusLine guibg=NONE guifg=white
 
 " C 
 autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=4 tabstop=4
