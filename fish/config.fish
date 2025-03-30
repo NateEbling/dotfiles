@@ -1,6 +1,12 @@
 set fish_greeting
 set -x EDITOR vim
 
+set ZIG_INSTALL (find ~ -maxdepth 1 -type d -name 'zig-linux-x86_64-*' | sort | tail -n 1)
+
+if test -d "$ZIG_INSTALL"
+  set -x PATH $ZIG_INSTALL $PATH
+end
+
 function gf
   git fetch --all --prune --tags
 end
