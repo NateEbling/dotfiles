@@ -51,3 +51,6 @@ map <C-l> <C-W>l
 
 " File finder
 nmap <Leader>t :FZF<CR>
+
+" Explorer
+nmap <Leader>e :E<CR>
