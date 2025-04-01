@@ -24,20 +24,19 @@ o.backup = false
 o.undofile = true
 o.splitright = true
 
-function Statusline()
-    local modified = vim.bo.modified and "*" or "-"
-    local version = vim.version()
-    local enc = vim.o.fenc ~= "" and vim.o.fenc or vim.o.enc
+function StatusLine()
+    local modified = vim.bo.modified and "**" or "--"
+    local line = vim.fn.line('.')
+    local name = vim.fn.expand("%") ~= "" and vim.fn.fnamemodify(vim.fn.expand("%"), ":t") or vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
     local status = string.format(
-        "-%s NVIM %s.%s.%s: %%t (%s) %%f %%= %s --",
+        " -:%s-   %s              %s   L%s",
         modified,
-        version.major,
-        version.minor,
-        version.patch,
-        enc,
-        "%P"
+        name,
+        "%P",
+        line
     )
     return status
 end
-vim.o.statusline = "%!v:lua.Statusline()"
-vim.o.fillchars = "stl:-"
+
+vim.o.statusline = "%!v:lua.StatusLine()"
+

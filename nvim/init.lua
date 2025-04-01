@@ -1,3 +1,3 @@
 require("nate")
 
-vim.cmd.colorscheme('clean')
+vim.cmd.colorscheme('hmh-retro')
