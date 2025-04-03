@@ -1,3 +1,5 @@
 require('nate.set')
 require('nate.remap')
 require('nate.lazy_init')
+require('nate.statusline')
+require('nate.findfile')
