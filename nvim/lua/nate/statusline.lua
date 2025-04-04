@@ -1,5 +1,4 @@
 function Statusline()
-
     local bufnr = vim.api.nvim_get_current_buf()
     local full_name = vim.api.nvim_buf_get_name(bufnr)
     local name = vim.fn.fnamemodify(full_name, ":t")
@@ -13,12 +12,16 @@ function Statusline()
     end
 
     local function get_git_branch()
-        local branch = vim.fn.system("git -C " .. vim.fn.fnamemodify(full_name, ":h") .. " rev-parse --abbrev-ref HEAD 2>/dev/null")
+        local dir = vim.fn.fnamemodify(full_name, ":h")
+        -- Ensure git is only run if inside a git repository
+        local branch = vim.fn.system("git -C " .. dir .. " rev-parse --abbrev-ref HEAD 2>/dev/null")
         branch = vim.trim(branch)
-        return branch ~= "Git-" and branch or ""
+
+        -- Return branch with "Git-" prefix if a branch is found
+        return (branch ~= "" and branch ~= "HEAD") and "Git-" .. branch or ""
     end
 
-    local git_branch = fullname ~= "" and get_git_branch() or ""
+    local git_branch = get_git_branch() or ""
 
     local time = os.date("%H:%M")
 
@@ -52,5 +55,5 @@ vim.fn.timer_start(1000, function()
     end)
 end, { ["repeat"] = -1 })
 
-vim.o.fillchars ='stl:-,stlnc:-'
+vim.o.fillchars ='stl:-,stlnc:-,eob: '
 vim.o.statusline = "%!v:lua.Statusline()"
