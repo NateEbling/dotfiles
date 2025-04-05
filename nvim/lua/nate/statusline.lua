@@ -1,4 +1,5 @@
-function Statusline()
+-- A statusline that resembles the emacs modeline
+function StatuslineEmacs()
     local bufnr = vim.api.nvim_get_current_buf()
     local full_name = vim.api.nvim_buf_get_name(bufnr)
     local name = vim.fn.fnamemodify(full_name, ":t")
@@ -49,11 +50,46 @@ function Statusline()
     return status
 end
 
-vim.fn.timer_start(1000, function()
-    vim.schedule(function()
-        vim.cmd("redrawstatus")
-    end)
-end, { ["repeat"] = -1 })
+-- A statusline that resembles the uemacs modeline
+function StatuslineUEmacs()
+    local mod = vim.bo.modified and "*" or "-"
+    local ver = vim.version()
+    local name = vim.fn.expand("%") ~= "" and vim.fn.fnamemodify(vim.fn.expand("%"), ":t") or vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+
+    local filetype = vim.bo.filetype
+    filetype_disp = ""
+
+    if filetype == "cpp" or filetype == "c" then 
+        filetype_disp = "Cmode "
+    end
+
+    local file = vim
+    local enc = vim.bo.fenc ~= "" and vim.bo.fenc or vim.o.encoding
+    local path = vim.fn.expand('%:p')
+    if path == '' or path == '[No Name]' then
+        path = ''  -- Blank if there's no file name
+    end
+
+    local status = string.format(
+        "-%s Neovim %s.%s.%s: %s (%s%s) %s %%= %%P --",
+        mod,
+        ver.major,
+        ver.minor,
+        ver.patch,
+        name,
+        filetype_disp,
+        enc,
+        path
+    )
+
+    return status
+end
+
+--vim.fn.timer_start(1000, function()
+--    vim.schedule(function()
+--        vim.cmd("redrawstatus")
+--    end)
+--end, { ["repeat"] = -1 })
 
 vim.o.fillchars ='stl:-,stlnc:-,eob: '
-vim.o.statusline = "%!v:lua.Statusline()"
+vim.o.statusline = "%!v:lua.StatuslineUEmacs()"

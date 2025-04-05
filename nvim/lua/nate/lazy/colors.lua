@@ -1,13 +1,13 @@
 -- lua/plugins/rose-pine.lua
 return {
     {
-        "NateEbling/clean.vim",
-    },
-    {
-        "NateEbling/sitruuna.vim",
+        "NateEbling/2col.vim",
     },
     {
         "NateEbling/hmh-retro.vim",
     },
+    {
+        "NateEbling/clean.vim",
+    }
 }
 
