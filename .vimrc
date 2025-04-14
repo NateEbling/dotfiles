@@ -41,7 +41,7 @@ autocmd FileType zig setlocal expandtab shiftwidth=4 tabstop=4
 nnoremap <C-x> <Nop>
 nnoremap <silent> <C-x><C-f> :call FindFile()<CR>
 nnoremap <silent> <C-x>e :Ex<CR>
-nnoremap <silent> <C-x><C-s> :w<CR>
+nnoremap <silent> <C-x><C-d> :w<CR>
 nnoremap <silent> <C-x>c :q!<CR>
 
 function! FindFile()
@@ -77,7 +77,7 @@ function! StatuslineUEmacs()
   endif
 
   let status = printf(
-        \ "-%s Neovim %d.%d.%d: %s (%s%s) %s %%= %%P --",
+        \ "-%s Vim %d.%d.%d: %s (%s%s) %s %%= %%P --",
         \ mod,
         \ major,
         \ minor,
