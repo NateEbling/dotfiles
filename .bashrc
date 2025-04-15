@@ -1,41 +1,39 @@
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+# .bashrc
 
-# force ignoredups and ignorespace
-HISTCONTROL=ignoreboth
-# these commands in conjunction make history work across terminals
-shopt -s histappend
-PROMPT_COMMAND="history -a"
-# keep a lot of bash history
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+if [ -d ~/.bashrc.d ]; then
+    for rc in ~/.bashrc.d/*; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
+fi
+unset rc
+
 HISTSIZE=50000
 HISTFILESIZE=10000000
 
-export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-EDITOR=nvim
+EDITOR=em
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-
 # cd to possibly nonexisting dir
 ccd() { mkdir -p "$@" && cd "$@"; }
 
-# enter nix-shell with dev command
-dev() { nix-shell -p "$@"; }
-
-export ZIG_INSTALL=$(find ~ -maxdepth 1 -type d -name 'zig-linux-x86_64-*' | sort | tail -n 1)
-
-if [ -d "$ZIG_INSTALL" ]; then
-    export PATH="$ZIG_INSTALL:$PATH"
-fi
-
-# add ~/bin to PATH
-export PATH="~/local/bin:$PATH"
+PS1='[\u@\h \W]\$ '
