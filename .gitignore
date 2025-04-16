@@ -10,3 +10,4 @@ tags
 *.swm
 .gdb_history
 .vscode
+*.lock~
