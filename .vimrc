@@ -57,13 +57,14 @@ function! Statusline()
   let l:major = l:version / 100
   let l:minor = l:version % 100
   let l:enc = (&fenc != '' ? &fenc : &enc)
+  let l:relpath = fnamemodify(expand('%'), ':.')
 
   return join([
     \ '-' . l:modified,
     \ 'Vim ' . l:major . '.' . l:minor . ':',
     \ '%t',
     \ '(' . l:enc . ')',
-    \ '%F',
+    \ l:relpath,
     \ '%=',
     \ '%P',
     \ '--'
