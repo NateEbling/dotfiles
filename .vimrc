@@ -1,9 +1,11 @@
 call plug#begin()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'NateEbling/2col.vim'
 call plug#end()
 
-syntax on
 filetype on
+syntax on
 set expandtab
 set bs=2
 set tabstop=2
@@ -15,81 +17,58 @@ set ignorecase
 set modeline
 set nocompatible
 set encoding=utf-8
-set hlsearch
-set history=700
-set termguicolors
+set nohlsearch
+set history=10000
 set t_Co=256
-set background=dark
+set termguicolors
+set background=light
 set tabpagemax=1000
+set ruler
 set nojoinspaces
 set shiftround
 set nonumber
-set ruler
-set tw=80
-set fo+=t
-set fo-=l
+set nolbr
+set tw=0
+set noswapfile
 set laststatus=2
+set cursorline
+set colorcolumn = "80"
 
 colorscheme 2c
 
-" C 
-autocmd BufRead,BufNewFile *.c,*.cpp,*.h setlocal shiftwidth=8 tabstop=8
+hi statusline gui=NONE cterm=NONE
+hi cursorline gui=NONE cterm=NONE
 
-" Zig
-autocmd FileType zig setlocal expandtab shiftwidth=4 tabstop=4
+let mapleader = " "
+nmap <silent> <Leader>f :FZF<CR>
 
-nnoremap <C-x> <Nop>
-nnoremap <silent> <C-x><C-f> :call FindFile()<CR>
-nnoremap <silent> <C-x>e :Ex<CR>
-nnoremap <silent> <C-x><C-d> :w<CR>
-nnoremap <silent> <C-x>c :q!<CR>
+" C
+autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=8 tabstop=8
 
-function! FindFile()
-    let prompt = "Find file: "
-    let file = input(prompt, "", "file")
+" Matlab
+autocmd BufRead,BufNewFile *.m setlocal shiftwidth=4 tabstop=4
 
-    if file != ""
-        execute "edit " . file
-    endif
-endfunction
-function! StatuslineUEmacs()
-  let mod = &modified ? '*' : '-'
+" Rust
+autocmd BufRead,BufNewFile *.rs,*.toml setlocal shiftwidth=4 tabstop=4
 
-  " Get version parts using integer math
-  let ver = v:version
-  let major = ver / 100
-  let minor = (ver % 100) / 10
-  let patch = ver % 10
+function! Statusline()
+  let l:modified = (&modified ? '*' : '-')
+  let l:version = v:version
+  let l:major = l:version / 100
+  let l:minor = l:version % 100
+  let l:enc = (&fenc != '' ? &fenc : &enc)
 
-  let name = expand('%') !=# '' ? fnamemodify(expand('%'), ':t') : fnamemodify(getcwd(), ':t')
-
-  let filetype = &filetype
-  let filetype_disp = ''
-  if filetype ==# 'cpp' || filetype ==# 'c'
-    let filetype_disp = 'Cmode '
-  endif
-
-  let enc = &fenc !=# '' ? &fenc : &encoding
-
-  let path = expand('%:p')
-  if path ==# '' || path ==# '[No Name]'
-    let path = ''
-  endif
-
-  let status = printf(
-        \ "-%s Vim %d.%d.%d: %s (%s%s) %s %%= %%P --",
-        \ mod,
-        \ major,
-        \ minor,
-        \ patch,
-        \ name,
-        \ filetype_disp,
-        \ enc,
-        \ path
-        \)
-
-  return status
+  return join([
+    \ '-' . l:modified,
+    \ 'Vim ' . l:major . '.' . l:minor . ':',
+    \ '%t',
+    \ '(' . l:enc . ')',
+    \ '%F',
+    \ '%=',
+    \ '%P',
+    \ '--'
+    \ ], ' ')
 endfunction
 
-set fillchars=stl:-,stlnc:-,eob:\ 
-set statusline=%!StatuslineUEmacs()
+set fillchars+=stl:-
+set statusline=%!Statusline()
