@@ -12,3 +12,5 @@
         rebase = false
 [core]
         excludesfile = /home/nate/.gitignore
+[init]
+	defaultBranch = main
