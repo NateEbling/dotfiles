@@ -72,4 +72,5 @@ function! Statusline()
 endfunction
 
 set fillchars+=stl:-
+set fillchars=vert:│
 set statusline=%!Statusline()
