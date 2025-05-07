@@ -8,7 +8,7 @@
 HISTSIZE=50000
 HISTFILESIZE=10000000
 
-EDITOR=em
+EDITOR=vim
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
