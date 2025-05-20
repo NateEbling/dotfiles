@@ -40,7 +40,8 @@ hi statusline gui=NONE cterm=NONE
 hi cursorline gui=NONE cterm=NONE
 
 let mapleader = " "
-nmap <silent> <Leader>f :FZF<CR>
+nmap <silent> <Leader>fv :FZF<CR>
+nmap <silent> <Leader>pv :Ex<CR>
 
 " C
 autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=8 tabstop=8
