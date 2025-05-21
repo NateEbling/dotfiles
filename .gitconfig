@@ -1,16 +1,17 @@
 [user]
-        email = ebling.nathan@gmail.com
-        name = NateEbling
-        signingkey = /home/nate/.ssh/sign.pub
+  email = ebling.nathan@gmail.com
+  name = NateEbling
+  signingkey = /home/nate/.ssh/sign.pub
 [gpg]
-        format = ssh
+  format = ssh
 [commit]
-        gpgsign = true
+  gpgsign = true
 [push]
-        default = current
+  default = current
 [pull]
-        rebase = false
+  rebase = false
 [core]
-        excludesfile = /home/nate/.gitignore
+  excludesfile = /home/nate/.gitignore
+	editor = vim
 [init]
 	defaultBranch = main
