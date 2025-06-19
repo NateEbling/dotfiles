@@ -54,62 +54,23 @@ autocmd BufRead,BufNewFile *.m setlocal shiftwidth=4 tabstop=4
 autocmd BufRead,BufNewFile *.rs,*.toml setlocal shiftwidth=4 tabstop=4
 
 function! Statusline()
-  let bufnr = bufnr('')
-  let full_name = bufname(bufnr)
-  let name = fnamemodify(full_name, ':t')
+  let l:modified = (&modified ? '*' : '-')Add commentMore actions
+  let l:version = v:version
+  let l:major = l:version / 100
+  let l:minor = l:version % 100
+  let l:enc = (&fenc != '' ? &fenc : &enc)
+  let l:relpath = fnamemodify(expand('%'), ':.')
 
-  if name == ''
-    let name = fnamemodify(getcwd(), ':t')
-  endif
-
-  if &modified
-    let status = '**'
-  elseif &readonly
-    let status = '%%%%'
-  else
-    let status = '--'
-  endif
-
-  let line = line('.')
-
-  function! s:GetGitBranch(full_name)
-      let dir = fnamemodify(a:full_name, ':h')
-      let cmd = 'git -C ' . shellescape(dir) . ' rev-parse --abbrev-ref HEAD 2>/dev/null'
-      let branch = system(cmd)
-      let branch = substitute(branch, '\n', '', 'g')
-
-      if branch != '' && branch != 'HEAD'
-        return 'Git-' . branch
-      else
-        return ''
-      endif
-  endfunction
-
-  let git_branch = s:GetGitBranch(full_name)
-  let time = strftime('%H:%M')
-
-  let filetype = &filetype
-  if filetype ==# 'cpp' || filetype ==# 'c'
-    let filetype_disp = 'C/C++'
-  elseif filetype ==# 'zig'
-    let filetype_disp = 'Zig'
-  elseif filetype ==# 'rust'
-    let filetype_disp = "Rust"
-  else
-    let filetype_disp = toupper(filetype)
-  endif
-
-  let statusline = printf(
-    \ ' --%s-   %s          %%P   L%d   %s   (%s)--%s',
-    \ status,
-    \ name,
-    \ line,
-    \ git_branch,
-    \ filetype_disp,
-    \ time
-    \)
-
-  return statusline
+  return join([
+    \ '-' . l:modified,
+    \ 'Vim ' . l:major . '.' . l:minor . ':',
+    \ '%t',
+    \ '(' . l:enc . ')',
+    \ l:relpath,
+    \ '%=',
+    \ '%P',
+    \ '--'
+    \ ], ' ')
 endfunction
 
 set fillchars=vert:│
