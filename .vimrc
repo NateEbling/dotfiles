@@ -1,4 +1,4 @@
-call plug#begin()
+call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'NateEbling/2col.vim'
@@ -35,7 +35,7 @@ set laststatus=2
 set cursorline
 set colorcolumn = "80"
 
-colorscheme 2c
+colorscheme clean
 
 hi statusline gui=NONE cterm=NONE
 hi cursorline gui=NONE cterm=NONE
@@ -47,6 +47,9 @@ nmap <silent> <Leader>pv :Ex<CR>
 " C
 autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=8 tabstop=8
 
+" Zig
+autocmd BufRead,BufNewFile *zig setlocal shiftwidth=4 tabstop=4
+
 " Matlab
 autocmd BufRead,BufNewFile *.m setlocal shiftwidth=4 tabstop=4
 
@@ -54,7 +57,7 @@ autocmd BufRead,BufNewFile *.m setlocal shiftwidth=4 tabstop=4
 autocmd BufRead,BufNewFile *.rs,*.toml setlocal shiftwidth=4 tabstop=4
 
 function! Statusline()
-  let l:modified = (&modified ? '*' : '-')Add commentMore actions
+  let l:modified = (&modified ? '*' : '-')
   let l:version = v:version
   let l:major = l:version / 100
   let l:minor = l:version % 100
