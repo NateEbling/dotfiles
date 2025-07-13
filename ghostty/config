@@ -1,0 +1,8 @@
+shell-integration-features = no-cursor
+
+cursor-style = block
+
+font-family = Liberation Mono
+font-size = 12
+
+mouse-hide-while-typing

@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'NateEbling/2col.vim'
@@ -35,7 +35,7 @@ set laststatus=2
 set cursorline
 set colorcolumn = "80"
 
-colorscheme clean
+colorscheme evening
 
 hi statusline gui=NONE cterm=NONE
 hi cursorline gui=NONE cterm=NONE
