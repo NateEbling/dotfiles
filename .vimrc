@@ -2,7 +2,6 @@ call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'NateEbling/2col.vim'
-Plug 'NateEbling/clean.vim'
 call plug#end()
 
 filetype on
@@ -24,18 +23,16 @@ set t_Co=256
 set termguicolors
 set background=light
 set tabpagemax=1000
-set ruler
+set noruler
 set nojoinspaces
 set shiftround
 set nonumber
 set nolbr
 set tw=0
 set noswapfile
-set laststatus=2
-set cursorline
-set colorcolumn = "80"
+set laststatus=0
 
-colorscheme evening
+colorscheme 2c
 
 hi statusline gui=NONE cterm=NONE
 hi cursorline gui=NONE cterm=NONE
@@ -56,26 +53,4 @@ autocmd BufRead,BufNewFile *.m setlocal shiftwidth=4 tabstop=4
 " Rust
 autocmd BufRead,BufNewFile *.rs,*.toml setlocal shiftwidth=4 tabstop=4
 
-function! Statusline()
-  let l:modified = (&modified ? '*' : '-')
-  let l:version = v:version
-  let l:major = l:version / 100
-  let l:minor = l:version % 100
-  let l:enc = (&fenc != '' ? &fenc : &enc)
-  let l:relpath = fnamemodify(expand('%'), ':.')
-
-  return join([
-    \ '-' . l:modified,
-    \ 'Vim ' . l:major . '.' . l:minor . ':',
-    \ '%t',
-    \ '(' . l:enc . ')',
-    \ l:relpath,
-    \ '%=',
-    \ '%P',
-    \ '--'
-    \ ], ' ')
-endfunction
-
 set fillchars=vert:│
-set fillchars+=stl:-
-set statusline=%!Statusline()

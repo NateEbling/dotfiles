@@ -1,0 +1,51 @@
+{
+  "modules-left": ["custom/appmenuicon", "hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["tray", "pulseaudio", "network" , "custom/power"],
+
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": " ",
+    "format-ethernet": "",
+    "format-disconnected": "DC",
+    "max-length": 50,
+    "tooltip": false,
+  },
+
+  "tray": {
+    "icon-size": 15,
+    "spacing": 10,
+    "tooltip": false,
+  },
+
+  "clock": {
+    "format": "{:%a %b %d %H:%M}",
+    "tooltip": false,
+    "on-click": "gnome-calendar"
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": " {format_source}",
+    "format-source": "",
+    "tooltip-format": "Volume: {volume}%",
+    "format-source-muted": "",
+    "format-icons": {
+      "default": ["", ""]
+    },
+    "on-click": "pavucontrol",
+  },
+
+  "custom/power": {
+		"format": " ",
+		"on-click": "wlogout",
+    "tooltip": false,
+	},
+
+  "custom/appmenuicon": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "wofi --show drun",
+  },
+
+}
