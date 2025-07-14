@@ -12,6 +12,6 @@
   rebase = false
 [core]
   excludesfile = /home/nate/.gitignore
-	editor = vim
+  editor = vim
 [init]
-	defaultBranch = main
+  defaultBranch = main
