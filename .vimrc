@@ -1,7 +1,7 @@
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'NateEbling/2col.vim'
+Plug 'NateEbling/freshcut-contrast.vim'
 call plug#end()
 
 filetype on
@@ -23,7 +23,7 @@ set t_Co=256
 set termguicolors
 set background=light
 set tabpagemax=1000
-set noruler
+set ruler
 set nojoinspaces
 set shiftround
 set nonumber
@@ -31,11 +31,9 @@ set nolbr
 set tw=0
 set noswapfile
 set laststatus=0
+set fillchars=vert:│
 
-colorscheme 2c
-
-hi statusline gui=NONE cterm=NONE
-hi cursorline gui=NONE cterm=NONE
+colorscheme freshcut-contrast
 
 let mapleader = " "
 nmap <silent> <Leader>fv :FZF<CR>
@@ -53,4 +51,5 @@ autocmd BufRead,BufNewFile *.m setlocal shiftwidth=4 tabstop=4
 " Rust
 autocmd BufRead,BufNewFile *.rs,*.toml setlocal shiftwidth=4 tabstop=4
 
-set fillchars=vert:│
+" Odin
+autocmd BufRead,BufnewFile *.odin setlocal shiftwidth=4 tabstop=4
