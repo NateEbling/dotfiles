@@ -21,7 +21,7 @@ set nohlsearch
 set history=10000
 set t_Co=256
 set termguicolors
-set background=light
+set background=dark
 set tabpagemax=1000
 set ruler
 set nojoinspaces
