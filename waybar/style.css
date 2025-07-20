@@ -51,6 +51,10 @@ window#waybar {
   background-color: rgba(23, 146, 208, 0.4);
 }
 
+#battery {
+  padding: 0 7px 0 0;
+}
+
 #network {
   padding: 0 7px 0 0;
 }

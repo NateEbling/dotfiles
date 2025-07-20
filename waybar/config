@@ -1,7 +1,7 @@
 {
   "modules-left": ["custom/appmenuicon", "hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["tray", "pulseaudio", "network" , "custom/power"],
+  "modules-right": ["tray", "pulseaudio", "network" , "battery", "custom/power"],
 
   "network": {
     "format": "{ifname}",
@@ -10,6 +10,11 @@
     "format-disconnected": "DC",
     "max-length": 50,
     "tooltip": false,
+  },
+
+  "battery": {
+      "format": "{capacity}% {icon}",
+      "format-icons": ["", "", "", "", ""]
   },
 
   "tray": {
