@@ -53,4 +53,4 @@ autocmd BufRead,BufNewFile *.m setlocal shiftwidth=4 tabstop=4
 autocmd BufRead,BufNewFile *.rs,*.toml setlocal shiftwidth=4 tabstop=4
 
 " Odin
-autocmd BufRead,BufnewFile *.odin setlocal shiftwidth=4 tabstop=4
+autocmd BufRead,BufnewFile *.odin setlocal shiftwidth=8 tabstop=8
