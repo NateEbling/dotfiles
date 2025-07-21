@@ -1,7 +1,7 @@
 [user]
   email = ebling.nathan@gmail.com
   name = NateEbling
-  signingkey = /home/nate/.ssh/arch_sign.pub
+  signingkey = /home/nate/.ssh/arch-sign.pub
 [gpg]
   format = ssh
 [commit]

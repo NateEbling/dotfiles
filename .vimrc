@@ -27,7 +27,7 @@ set tabpagemax=1000
 set ruler
 set nojoinspaces
 set shiftround
-set nonumber
+set number
 set nolbr
 set tw=0
 set noswapfile
