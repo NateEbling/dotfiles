@@ -7,6 +7,14 @@ if test -d "$ZIG_INSTALL"
   set -x PATH $ZIG_INSTALL $PATH
 end
 
+function bubu
+  venv gw2 && python3 ~/git/bubu2000/src/main.py
+end
+
+function venv
+  source ~/$argv/bin/activate.fish
+end
+
 function gf
   git fetch --all --prune --tags
 end
