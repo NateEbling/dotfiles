@@ -1,6 +1,7 @@
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'sheerun/vim-polyglot'
 Plug 'NateEbling/freshcut-contrast.vim'
 Plug 'Tetralux/odin.vim'
 call plug#end()
