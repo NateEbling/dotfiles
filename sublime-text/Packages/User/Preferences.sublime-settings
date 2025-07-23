@@ -1,0 +1,10 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+	"ignored_packages": [
+	],
+	"color_scheme": "Packages/User/freshcut-contrast.tmTheme",
+	"theme": "Default Dark.sublime-theme",
+	"no_italic": "",
+	"index_files": true,
+}
