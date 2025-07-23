@@ -29,6 +29,7 @@ set ruler
 set nojoinspaces
 set shiftround
 set number
+set cursorline
 set nolbr
 set tw=0
 set noswapfile
