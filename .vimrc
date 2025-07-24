@@ -6,6 +6,7 @@ Plug 'NateEbling/freshcut-contrast.vim'
 Plug 'Tetralux/odin.vim'
 call plug#end()
 
+set guicursor=n-v-c-i-ci-ve:ver20,r-cr:hor20,o:hor50
 filetype on
 syntax on
 set expandtab
@@ -29,6 +30,7 @@ set ruler
 set nojoinspaces
 set shiftround
 set number
+set cursorline
 set nolbr
 set tw=0
 set noswapfile
