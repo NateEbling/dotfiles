@@ -1,12 +1,10 @@
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'NateEbling/freshcut-contrast.vim'
-Plug 'Tetralux/odin.vim'
+Plug 'NateEbling/2col.vim'
 call plug#end()
 
-set guicursor=n-v-c-i-ci-ve:ver20,r-cr:hor20,o:hor50
+set guicursor=n-v-c-i:block
 filetype on
 syntax on
 set expandtab
@@ -29,22 +27,20 @@ set tabpagemax=1000
 set ruler
 set nojoinspaces
 set shiftround
-set number
-set cursorline
 set nolbr
 set tw=0
 set noswapfile
 set laststatus=0
-set fillchars=vert:│
+set fillchars=vert:â”‚
 
-colorscheme freshcut-contrast
+colorscheme 2c
 
 let mapleader = " "
 nmap <silent> <Leader>fv :FZF<CR>
 nmap <silent> <Leader>pv :Ex<CR>
 
-" C
-autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=8 tabstop=8
+" C/C++
+autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.hpp setlocal shiftwidth=8 tabstop=8
 
 " Zig
 autocmd BufRead,BufNewFile *zig setlocal shiftwidth=4 tabstop=4
@@ -57,12 +53,3 @@ autocmd BufRead,BufNewFile *.rs,*.toml setlocal shiftwidth=4 tabstop=4
 
 " Odin
 autocmd BufRead,BufnewFile *.odin setlocal shiftwidth=8 tabstop=8
-
-function! SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
-map gm :call SynStack()<CR>
