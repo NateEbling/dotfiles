@@ -6,7 +6,7 @@ call plug#end()
 
 set guicursor=n-v-c-i:block
 filetype on
-syntax on
+syntax off
 set expandtab
 set bs=2
 set tabstop=2
@@ -22,7 +22,6 @@ set nohlsearch
 set history=10000
 set t_Co=256
 set termguicolors
-set background=dark
 set tabpagemax=1000
 set ruler
 set nojoinspaces
@@ -30,26 +29,24 @@ set shiftround
 set nolbr
 set tw=0
 set noswapfile
-set laststatus=0
-set fillchars=vert:â”‚
+set laststatus=2
+set fillchars+=vert:│
 
-colorscheme 2c
+hi statusline guibg=fg guifg=bg cterm=NONE
+hi statuslinenc guibg=fg guifg=bg cterm=NONE
 
 let mapleader = " "
-nmap <silent> <Leader>fv :FZF<CR>
 nmap <silent> <Leader>pv :Ex<CR>
+nmap <silent> <Leader>fv :FZF<CR>
 
-" C/C++
-autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.hpp setlocal shiftwidth=8 tabstop=8
-
-" Zig
-autocmd BufRead,BufNewFile *zig setlocal shiftwidth=4 tabstop=4
+" C
+autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=8 tabstop=8
 
 " Matlab
 autocmd BufRead,BufNewFile *.m setlocal shiftwidth=4 tabstop=4
 
 " Rust
-autocmd BufRead,BufNewFile *.rs,*.toml setlocal shiftwidth=4 tabstop=4
+autocmd BufRead,BufnewFile *.rs,*.toml setlocal shiftwidth=4 tabstop=4
 
 " Odin
 autocmd BufRead,BufnewFile *.odin setlocal shiftwidth=8 tabstop=8
