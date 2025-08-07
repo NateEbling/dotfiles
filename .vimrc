@@ -6,7 +6,7 @@ call plug#end()
 
 set guicursor=n-v-c-i:block
 filetype on
-syntax off
+syntax on
 set expandtab
 set bs=2
 set tabstop=2
@@ -32,8 +32,7 @@ set noswapfile
 set laststatus=2
 set fillchars+=vert:│
 
-hi statusline guibg=fg guifg=bg cterm=NONE
-hi statuslinenc guibg=fg guifg=bg cterm=NONE
+colorscheme 2c
 
 let mapleader = " "
 nmap <silent> <Leader>pv :Ex<CR>
