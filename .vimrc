@@ -53,3 +53,26 @@ autocmd BufRead,BufNewFile *.rs,*.toml setlocal shiftwidth=4 tabstop=4
 
 " Odin
 autocmd BufRead,BufnewFile *.odin setlocal shiftwidth=8 tabstop=8
+
+function! Statusline()
+  let l:modified = (&modified ? '*' : '-')
+  let l:version = v:version
+  let l:major = l:version / 100
+  let l:minor = l:version % 100
+  let l:enc = (&fenc != '' ? &fenc : &enc)
+  let l:relpath = fnamemodify(expand('%'), ':.')
+
+  return join([
+    \ '-' . l:modified,
+    \ 'Vim ' . l:major . '.' . l:minor . ':',
+    \ '%t',
+    \ '(' . l:enc . ')',
+    \ l:relpath,
+    \ '%=',
+    \ '%P',
+    \ '--'
+    \ ], ' ')
+endfunction
+
+set fillchars+=stl:-
+set statusline=%!Statusline()
