@@ -38,6 +38,9 @@ let mapleader = " "
 nmap <silent> <Leader>pv :Ex<CR>
 nmap <silent> <Leader>fv :FZF<CR>
 
+" Replace all
+nnoremap <leader>r yiw:%s/\<<C-r>"\>//g<left><left>
+
 " C
 autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=8 tabstop=8
 
