@@ -1,10 +1,11 @@
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'Tetralux/odin.vim'
+Plug 'tpope/vim-fugitive'
 Plug 'NateEbling/2col.vim'
 call plug#end()
 
-set guicursor=n-v-c-i:block
 filetype on
 syntax on
 set expandtab
@@ -38,8 +39,11 @@ let mapleader = " "
 nmap <silent> <Leader>pv :Ex<CR>
 nmap <silent> <Leader>fv :FZF<CR>
 
-" Replace all
-nnoremap <leader>r yiw:%s/\<<C-r>"\>//gc<left><left><left>
+"(R)eplace all
+nnoremap <leader>r yiw:%s/\<<C-r>"\>//g<left><left>
+
+"(R)eplace all (with confirm)
+nnoremap <leader>rc yiw:%s/\<<C-r>"\>//gc<left><left><left>
 
 " C
 autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=8 tabstop=8
@@ -51,27 +55,17 @@ autocmd BufRead,BufNewFile *.m setlocal shiftwidth=4 tabstop=4
 autocmd BufRead,BufnewFile *.rs,*.toml setlocal shiftwidth=4 tabstop=4
 
 " Odin
-autocmd BufRead,BufnewFile *.odin setlocal shiftwidth=8 tabstop=8
+autocmd BufRead,BufnewFile *.odin setlocal shiftwidth=4 tabstop=4
 
 function! Statusline()
-  let l:modified = (&modified ? '*' : '-')
-  let l:version = v:version
-  let l:major = l:version / 100
-  let l:minor = l:version % 100
-  let l:enc = (&fenc != '' ? &fenc : &enc)
-  let l:relpath = fnamemodify(expand('%'), ':.')
+  let l:modified = (&modified ? '*' : '')
 
-  return join([
-    \ '-' . l:modified,
-    \ 'Vim ' . l:major . '.' . l:minor . ':',
-    \ '%t',
-    \ '(' . l:enc . ')',
-    \ l:relpath,
-    \ '%=',
-    \ '%P',
-    \ '--'
-    \ ], ' ')
+  return
+    \ '%t' . l:modified . repeat(' ', 4) .
+    \ 'Line %l, Column %c' .
+    \ '%=' .
+    \ ' %{FugitiveHead()}' .
+    \ repeat(' ', 4)
 endfunction
 
-set fillchars+=stl:-
 set statusline=%!Statusline()
