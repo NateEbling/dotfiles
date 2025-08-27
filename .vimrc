@@ -6,6 +6,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'NateEbling/2col.vim'
 call plug#end()
 
+set guicursor=n-v-c-i:block
 filetype on
 syntax on
 set expandtab
@@ -39,11 +40,11 @@ let mapleader = " "
 nmap <silent> <Leader>pv :Ex<CR>
 nmap <silent> <Leader>fv :FZF<CR>
 
-"(R)eplace all
-nnoremap <leader>r yiw:%s/\<<C-r>"\>//g<left><left>
+"(R)eplace all (no confirm)
+nnoremap <leader>rn yiw:%s/\<<C-r>"\>//g<left><left>
 
 "(R)eplace all (with confirm)
-nnoremap <leader>rc yiw:%s/\<<C-r>"\>//gc<left><left><left>
+nnoremap <leader>r yiw:%s/\<<C-r>"\>//gc<left><left><left>
 
 " C
 autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=8 tabstop=8
