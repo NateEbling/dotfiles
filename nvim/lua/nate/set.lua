@@ -1,0 +1,27 @@
+local opt = vim.opt
+
+opt.guicursor = "n-v-c-i:block"
+opt.filetype = "on"
+opt.syntax = "on"
+opt.expandtab = true
+opt.backspace = { "indent", "eol" }
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.autoindent = true
+opt.smartindent = true
+opt.smartcase = true
+opt.ignorecase = true
+opt.modeline = true
+opt.encoding = "utf-8"
+opt.hlsearch = false
+opt.history = 10000
+opt.termguicolors = true
+opt.tabpagemax = 1000
+opt.ruler = true
+opt.joinspaces = false
+opt.shiftround = true
+opt.linebreak = false
+opt.textwidth = 0
+opt.swapfile = false
+opt.laststatus = 2
+opt.fillchars:append { vert = "│" }
