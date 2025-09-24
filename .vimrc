@@ -1,14 +1,7 @@
-call plug#begin()
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'Tetralux/odin.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'NateEbling/2col.vim'
-call plug#end()
-
-set guicursor=n-v-c-i:block
+"Settings
+set guicursor=n-v-i-c:block
 filetype on
-syntax on
+syntax off
 set expandtab
 set bs=2
 set tabstop=2
@@ -32,21 +25,18 @@ set nolbr
 set tw=0
 set noswapfile
 set laststatus=2
-set fillchars+=vert:│
-
-colorscheme 2c
+set fillchars+=vert:â”‚
 
 let mapleader = " "
 nmap <silent> <Leader>pv :Ex<CR>
-nmap <silent> <Leader>fv :FZF<CR>
 
-" (R)eplace all (no confirm)
+"(R)eplace all
 nnoremap <leader>rn yiw:%s/\<<C-r>"\>//g<left><left>
 
-" (R)eplace all (with confirm)
+"(R)eplace all (with confirm)
 nnoremap <leader>r yiw:%s/\<<C-r>"\>//gc<left><left><left>
 
-" Build command
+"Build command
 function! Build()
   if filereadable("build.bat")
     execute "!cmd /c build.bat"
@@ -58,6 +48,7 @@ endfunction
 
 nnoremap <leader>b :w<CR>:call Build()<CR>
 
+" Auto commands
 " C
 autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=8 tabstop=8
 
@@ -68,14 +59,14 @@ autocmd BufRead,BufNewFile *.m setlocal shiftwidth=4 tabstop=4
 autocmd BufRead,BufnewFile *.rs,*.toml setlocal shiftwidth=4 tabstop=4
 
 " Odin
-autocmd BufRead,BufnewFile *.odin setlocal shiftwidth=4 tabstop=4
+autocmd BufRead,BufnewFile *.odin setlocal shiftwidth=8 tabstop=8
 
 function! Statusline()
   let l:modified = (&modified ? '*' : '')
 
   return
     \ '%t' . l:modified . repeat(' ', 4) .
-    \ 'Line %l, Column %c' .
+    \ 'Ln %l, Col %c' .
     \ '%=' .
     \ ' %{FugitiveHead()}' .
     \ repeat(' ', 4)
