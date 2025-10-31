@@ -1,5 +1,5 @@
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-  pattern = { "*.c", "*.h" },
+  pattern = { "*.c", "*.cpp", "*.h", "*.hpp" },
   callback = function()
     vim.bo.shiftwidth = 8
     vim.bo.tabstop = 8
@@ -29,3 +29,12 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
     vim.bo.tabstop = 4
   end,
 })
+
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    pattern = "*.zig",
+    callback = function()
+      vim.bo.shiftwidth = 4
+      vim.bo.tabstop = 4
+    end,
+})
+
