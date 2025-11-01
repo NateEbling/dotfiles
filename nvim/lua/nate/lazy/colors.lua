@@ -1,5 +1,6 @@
 return {
   {
-    "NateEbling/2col.vim",
+    "zenbones-theme/zenbones.nvim",
   },
 }
+
