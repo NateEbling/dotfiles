@@ -36,21 +36,9 @@ nnoremap <leader>rn yiw:%s/\<<C-r>"\>//g<left><left>
 "(R)eplace all (with confirm)
 nnoremap <leader>r yiw:%s/\<<C-r>"\>//gc<left><left><left>
 
-"Build command
-function! Build()
-  if filereadable("build.bat")
-    execute "!cmd /c build.bat"
-  elseif &filetype ==# 'c'
-  else
-    echo "No build rule for this project"
-  endif
-endfunction
-
-nnoremap <leader>b :w<CR>:call Build()<CR>
-
 " Auto commands
 " C
-autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=8 tabstop=8
+autocmd BufRead,BufNewFile *.c,*.cpp,*.h setlocal shiftwidth=8 tabstop=8
 
 " Matlab
 autocmd BufRead,BufNewFile *.m setlocal shiftwidth=4 tabstop=4
@@ -61,15 +49,5 @@ autocmd BufRead,BufnewFile *.rs,*.toml setlocal shiftwidth=4 tabstop=4
 " Odin
 autocmd BufRead,BufnewFile *.odin setlocal shiftwidth=8 tabstop=8
 
-function! Statusline()
-  let l:modified = (&modified ? '*' : '')
-
-  return
-    \ '%t' . l:modified . repeat(' ', 4) .
-    \ 'Ln %l, Col %c' .
-    \ '%=' .
-    \ ' %{FugitiveHead()}' .
-    \ repeat(' ', 4)
-endfunction
-
-set statusline=%!Statusline()
+" Zig
+autocmd BufRead,BufnewFile *.zig setlocal shiftwidth=4 tabstop=4
