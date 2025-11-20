@@ -1,5 +1,4 @@
 call plug#begin()
-Plug 'NateEbling/clean.vim'
 call plug#end()
 
 "Settings
@@ -33,6 +32,7 @@ set fillchars+=vert:│
 
 colorscheme evening
 hi Cursor guibg=#ffffff guifg=NONE
+hi EndOfBuffer guibg=NONE guifg=#0000ff
 
 let mapleader = " "
 nmap <silent> <Leader>pv :Ex<CR>
