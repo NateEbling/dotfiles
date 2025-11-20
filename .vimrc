@@ -43,18 +43,6 @@ nnoremap <leader>rn yiw:%s/\<<C-r>"\>//g<left><left>
 "(R)eplace all (with confirm)
 nnoremap <leader>r yiw:%s/\<<C-r>"\>//gc<left><left><left>
 
-"Build command
-function! Build()
-  if filereadable("build.bat")
-    execute "!cmd /c build.bat"
-  elseif &filetype ==# 'c'
-  else
-    echo "No build rule for this project"
-  endif
-endfunction
-
-nnoremap <leader>b :w<CR>:call Build()<CR>
-
 " Auto commands
 " C
 autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=8 tabstop=8
