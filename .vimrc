@@ -1,7 +1,11 @@
+call plug#begin()
+Plug 'NateEbling/clean.vim'
+call plug#end()
+
 "Settings
 set guicursor=n-v-i-c:block
 filetype on
-syntax off
+syntax on
 set expandtab
 set bs=2
 set tabstop=2
@@ -25,7 +29,10 @@ set nolbr
 set tw=0
 set noswapfile
 set laststatus=2
-set fillchars+=vert:â”‚
+set fillchars+=vert:│
+
+colorscheme evening
+hi Cursor guibg=#ffffff guifg=NONE
 
 let mapleader = " "
 nmap <silent> <Leader>pv :Ex<CR>
@@ -36,9 +43,21 @@ nnoremap <leader>rn yiw:%s/\<<C-r>"\>//g<left><left>
 "(R)eplace all (with confirm)
 nnoremap <leader>r yiw:%s/\<<C-r>"\>//gc<left><left><left>
 
+"Build command
+function! Build()
+  if filereadable("build.bat")
+    execute "!cmd /c build.bat"
+  elseif &filetype ==# 'c'
+  else
+    echo "No build rule for this project"
+  endif
+endfunction
+
+nnoremap <leader>b :w<CR>:call Build()<CR>
+
 " Auto commands
 " C
-autocmd BufRead,BufNewFile *.c,*.cpp,*.h setlocal shiftwidth=8 tabstop=8
+autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=8 tabstop=8
 
 " Matlab
 autocmd BufRead,BufNewFile *.m setlocal shiftwidth=4 tabstop=4
@@ -48,6 +67,3 @@ autocmd BufRead,BufnewFile *.rs,*.toml setlocal shiftwidth=4 tabstop=4
 
 " Odin
 autocmd BufRead,BufnewFile *.odin setlocal shiftwidth=8 tabstop=8
-
-" Zig
-autocmd BufRead,BufnewFile *.zig setlocal shiftwidth=4 tabstop=4
