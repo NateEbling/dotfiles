@@ -1,4 +1,6 @@
 call plug#begin()
+Plug 'NateEbling/hmh-retro.vim'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 "Settings
@@ -7,8 +9,8 @@ filetype on
 syntax on
 set expandtab
 set bs=2
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set autoindent
 set smartindent
 set smartcase
@@ -27,12 +29,13 @@ set shiftround
 set nolbr
 set tw=0
 set noswapfile
+set cursorline
 set laststatus=2
-set fillchars+=vert:│
+set fillchars+=vert:â”‚
 
-colorscheme evening
-hi Cursor guibg=#ffffff guifg=NONE
-hi EndOfBuffer guibg=NONE guifg=#0000ff
+colorscheme hmh-retro
+hi statusline term=bold cterm=bold
+hi statuslinenc term=bold cterm=bold
 
 let mapleader = " "
 nmap <silent> <Leader>pv :Ex<CR>
@@ -47,11 +50,39 @@ nnoremap <leader>r yiw:%s/\<<C-r>"\>//gc<left><left><left>
 " C
 autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=8 tabstop=8
 
-" Matlab
-autocmd BufRead,BufNewFile *.m setlocal shiftwidth=4 tabstop=4
-
-" Rust
-autocmd BufRead,BufnewFile *.rs,*.toml setlocal shiftwidth=4 tabstop=4
-
 " Odin
 autocmd BufRead,BufnewFile *.odin setlocal shiftwidth=8 tabstop=8
+
+function! SynStack()
+    if !exists("*synstack")
+          return
+            endif
+              echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+nnoremap <leader>k :call SynStack()<CR>
+
+function! StatusLine()
+    let l:modified = &modified ? '**' : '--'
+    let l:line = line('.')
+
+    if expand('%') !=# ''
+        let l:name = fnamemodify(expand('%'), ':t')
+    else
+        let l:name = fnamemodify(getcwd(), ':t')
+    endif
+
+    let l:git = FugitiveHead()
+
+    let l:status = printf(
+        \ ' --\%s-   %s   %%P   L%s   {%s} ',
+        \ l:modified,
+        \ l:name,
+        \ l:line,
+        \ l:git
+        \ )
+    return l:status
+endfunction
+
+set fillchars=stl:-
+set statusline=%!StatusLine()
