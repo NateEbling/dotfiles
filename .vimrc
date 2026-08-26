@@ -1,14 +1,15 @@
 call plug#begin()
-Plug 'NateEbling/hmh-retro.vim'
-Plug 'tpope/vim-fugitive'
+Plug 'https://codeberg.org/Ebz/clean'
 call plug#end()
 
 "Settings
 set guicursor=n-v-i-c:block
 filetype on
 syntax on
+set termguicolors
+set background=dark
 set expandtab
-set bs=2
+set backspace=2
 set tabstop=4
 set shiftwidth=4
 set autoindent
@@ -18,25 +19,22 @@ set ignorecase
 set modeline
 set nocompatible
 set encoding=utf-8
-set nohlsearch
-set history=10000
+set history=700
 set t_Co=256
-set termguicolors
-set tabpagemax=1000
-set ruler
+set nohlsearch
 set nojoinspaces
+set ruler
 set shiftround
 set nolbr
-set tw=0
 set noswapfile
-set cursorline
+set nonumber
+set tw=0
 set laststatus=2
-set fillchars+=vert:â”‚
+set cc=80
 
-colorscheme hmh-retro
-hi statusline term=bold cterm=bold
-hi statuslinenc term=bold cterm=bold
+colorscheme clean
 
+" Keybinds
 let mapleader = " "
 nmap <silent> <Leader>pv :Ex<CR>
 
@@ -47,42 +45,76 @@ nnoremap <leader>rn yiw:%s/\<<C-r>"\>//g<left><left>
 nnoremap <leader>r yiw:%s/\<<C-r>"\>//gc<left><left><left>
 
 " Auto commands
-" C
-autocmd BufRead,BufNewFile *.c,*.h setlocal shiftwidth=8 tabstop=8
+" C/C++
+autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.hpp setlocal shiftwidth=8 tabstop=8
 
-" Odin
-autocmd BufRead,BufnewFile *.odin setlocal shiftwidth=8 tabstop=8
 
-function! SynStack()
+nmap <Leader>k :call <SID>SynStack()<CR>
+function! <SID>SynStack()
     if !exists("*synstack")
-          return
-            endif
-              echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+        return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
-nnoremap <leader>k :call SynStack()<CR>
+function! UpdateGitBranchCache()
+    let b:git_branch_cache = ''
 
-function! StatusLine()
-    let l:modified = &modified ? '**' : '--'
-    let l:line = line('.')
-
-    if expand('%') !=# ''
-        let l:name = fnamemodify(expand('%'), ':t')
-    else
-        let l:name = fnamemodify(getcwd(), ':t')
+    if &buftype != ''
+        return
     endif
 
-    let l:git = FugitiveHead()
+    let dir = expand('%:p:h')
+    if dir == '' || !isdirectory(dir)
+        return
+    endif
 
-    let l:status = printf(
-        \ ' --\%s-   %s   %%P   L%s   {%s} ',
-        \ l:modified,
-        \ l:name,
-        \ l:line,
-        \ l:git
-        \ )
-    return l:status
+    let branch = system('git -C ' . shellescape(dir) . ' rev-parse --abbrev-ref HEAD 2>/dev/null')
+    let branch = substitute(branch, '\n$', '', '')
+
+    if branch != '' && branch != 'HEAD'
+        let b:git_branch_cache = 'Git-' . branch
+    endif
 endfunction
 
-set fillchars=stl:-
-set statusline=%!StatusLine()
+augroup StatuslineGitCache
+    autocmd!
+    autocmd BufEnter,BufWritePost * call UpdateGitBranchCache()
+augroup END
+
+function! StatuslineEmacs()
+    let name = expand('%:t')
+    if name == ''
+        let name = fnamemodify(getcwd(), ':t')
+    endif
+
+    let status = &modified ? '**' : (&readonly ? '%%' : '--')
+
+    let line = line('.')
+
+    let git_branch = get(b:, 'git_branch_cache', '')
+
+    let filetype = &filetype
+    let filetype_disp = ''
+    if filetype == 'c' || filetype == 'cpp'
+        let filetype_disp = 'C/C++'
+    elseif filetype == 'zig'
+        let filetype_disp = 'Zig'
+    elseif filetype == ''
+        let filetype_disp = 'NONE'
+    else
+        let filetype_disp = toupper(filetype)
+    endif
+
+    return printf(
+        \ ' --\%s-   %s          %s   L%s   %s   (%s)--',
+        \ status,
+        \ name,
+        \ '%P',
+        \ line,
+        \ git_branch,
+        \ filetype_disp
+        \ )
+endfunction
+
+set statusline=%!StatuslineEmacs()
