@@ -57,31 +57,6 @@ function! <SID>SynStack()
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
-function! UpdateGitBranchCache()
-    let b:git_branch_cache = ''
-
-    if &buftype != ''
-        return
-    endif
-
-    let dir = expand('%:p:h')
-    if dir == '' || !isdirectory(dir)
-        return
-    endif
-
-    let branch = system('git -C ' . shellescape(dir) . ' rev-parse --abbrev-ref HEAD 2>/dev/null')
-    let branch = substitute(branch, '\n$', '', '')
-
-    if branch != '' && branch != 'HEAD'
-        let b:git_branch_cache = 'Git-' . branch
-    endif
-endfunction
-
-augroup StatuslineGitCache
-    autocmd!
-    autocmd BufEnter,BufWritePost * call UpdateGitBranchCache()
-augroup END
-
 function! StatuslineEmacs()
     let name = expand('%:t')
     if name == ''
@@ -92,27 +67,22 @@ function! StatuslineEmacs()
 
     let line = line('.')
 
-    let git_branch = get(b:, 'git_branch_cache', '')
-
     let filetype = &filetype
     let filetype_disp = ''
-    if filetype == 'c' || filetype == 'cpp'
+    if filetype == 'c' || filetype == 'cpp' || filetype == 'h' || filetype == 'hpp'
         let filetype_disp = 'C/C++'
     elseif filetype == 'zig'
         let filetype_disp = 'Zig'
-    elseif filetype == ''
-        let filetype_disp = 'NONE'
     else
         let filetype_disp = toupper(filetype)
     endif
 
     return printf(
-        \ ' --\%s-   %s          %s   L%s   %s   (%s)--',
+        \ ' --\%s-   %s          %s   L%s   (%s)--',
         \ status,
         \ name,
         \ '%P',
         \ line,
-        \ git_branch,
         \ filetype_disp
         \ )
 endfunction
